@@ -38,23 +38,26 @@ public class ArrayDeque<T> {
     }
 
     private void changeCapacity(int newCapacity) {
-        capacity = newCapacity;
-        T[] newItems = (T[]) new Object[capacity];
 
+        T[] newItems = (T[]) new Object[newCapacity];
+        
         for (int i = 0; i < size; ++i) {
             newItems[i] = items[hash(i)];
         }
+
+        items = newItems;
+        capacity = newCapacity;
         startLoc = 0;
     }
 
     public void addFirst(T item) {
-        ++size;
 
         // if size > 0.6*capacity, increase
         if (3 * size >= 2 * capacity) {
             changeCapacity(2 * capacity);
         }
 
+        ++size;
         --startLoc;
         if (startLoc < 0) {
             startLoc += capacity;
@@ -64,13 +67,13 @@ public class ArrayDeque<T> {
     }
 
     public void addLast(T item) {
-        ++size;
 
         // if size > 0.6*capacity, increase
         if (3 * size >= 2 * capacity) {
             changeCapacity(2 * capacity);
         }
 
+        ++size;
         items[hash(size - 1)] = item;
     }
 
