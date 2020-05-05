@@ -16,13 +16,13 @@ public class ArrayDeque<T> {
 
     // comment this method since grader for sp18 does not support it
     // public ArrayDeque(ArrayDeque other) {
-    //     this.capacity = other.capacity;
-    //     this.size = 0;
-    //     this.startLoc = 0;
-    //     this.items = (T[]) new Object[capacity];
-    //     for (int i = 0; i < this.size; ++i) {
-    //         this.items[this.hash(i)] = (T) other.items[other.hash(i)];
-    //     }
+    // this.capacity = other.capacity;
+    // this.size = 0;
+    // this.startLoc = 0;
+    // this.items = (T[]) new Object[capacity];
+    // for (int i = 0; i < this.size; ++i) {
+    // this.items[this.hash(i)] = (T) other.items[other.hash(i)];
+    // }
     // }
 
     /**
@@ -108,6 +108,10 @@ public class ArrayDeque<T> {
         }
         --size;
 
+        if (4 * size < capacity) {
+            changeCapacity(capacity / 2);
+        }
+
         return res;
     }
 
@@ -120,6 +124,9 @@ public class ArrayDeque<T> {
         items[hash(size - 1)] = null;
 
         --size;
+        if (4 * size < capacity) {
+            changeCapacity(capacity / 2);
+        }
 
         return res;
     }
