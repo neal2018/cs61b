@@ -14,15 +14,16 @@ public class ArrayDeque<T> {
         items = (T[]) new Object[capacity];
     }
 
-    public ArrayDeque(ArrayDeque other) {
-        this.capacity = other.capacity;
-        this.size = 0;
-        this.startLoc = 0;
-        this.items = (T[]) new Object[capacity];
-        for (int i = 0; i < this.size; ++i) {
-            this.items[this.hash(i)] = (T) other.items[other.hash(i)];
-        }
-    }
+    // comment this method since grader for sp18 does not support it
+    // public ArrayDeque(ArrayDeque other) {
+    //     this.capacity = other.capacity;
+    //     this.size = 0;
+    //     this.startLoc = 0;
+    //     this.items = (T[]) new Object[capacity];
+    //     for (int i = 0; i < this.size; ++i) {
+    //         this.items[this.hash(i)] = (T) other.items[other.hash(i)];
+    //     }
+    // }
 
     /**
      * from originLoc calculate the real location in array both indexes start from 0
@@ -40,7 +41,7 @@ public class ArrayDeque<T> {
     private void changeCapacity(int newCapacity) {
 
         T[] newItems = (T[]) new Object[newCapacity];
-        
+
         for (int i = 0; i < size; ++i) {
             newItems[i] = items[hash(i)];
         }
@@ -94,6 +95,10 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
+        if (size() == 0) {
+            return null;
+        }
+
         T res = items[hash(0)];
         items[hash(0)] = null;
 
@@ -107,6 +112,10 @@ public class ArrayDeque<T> {
     }
 
     public T removeLast() {
+        if (size() == 0) {
+            return null;
+        }
+
         T res = items[hash(size - 1)];
         items[hash(size - 1)] = null;
 
