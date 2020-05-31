@@ -31,10 +31,7 @@ public class UnionFind {
      * size of the tree for which v1 is the root.
      */
     public int parent(int v1) {
-        if (parents[v1] >= 0) {
-            parents[v1] = parents[find(v1)];
-        }
-        return parents[find(v1)];
+        return parents[v1];
     }
 
     /* Returns true if nodes v1 and v2 are connected. */
@@ -77,18 +74,12 @@ public class UnionFind {
      */
     public int find(int vertex) {
         validate(vertex);
-        int root = vertex;
-        while (parent(root) > -1) {
-            root = parent(root);
+        if (parents[vertex] >= 0) {
+            parents[vertex] = find(parents[vertex]);
+            return parents[vertex];
+        } else {
+            return vertex;
         }
-        // path-compression
-        int currParent;
-        while (vertex != root) {
-            currParent = parent(vertex);
-            parents[vertex] = root;
-            vertex = currParent;
-        }
-        return root;
     }
 
 }
