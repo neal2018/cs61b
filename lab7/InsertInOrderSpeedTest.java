@@ -6,8 +6,8 @@ import java.util.Scanner;
 import edu.princeton.cs.algs4.Stopwatch;
 
 /**
- * Performs a timing test on three different set implementations.
- * For BSTMap purposes assumes that <K,V> are <String, Integer> pairs.
+ * Performs a timing test on three different set implementations. For BSTMap
+ * purposes assumes that <K,V> are <String, Integer> pairs.
  *
  * @author Josh Hug
  * @author Brendan Hu
@@ -42,8 +42,8 @@ public class InsertInOrderSpeedTest {
     }
 
     /**
-     * Returns time needed to put N strings into a Map61B in increasing order.
-     * makes use of StringUtils.nextString(String s)
+     * Returns time needed to put N strings into a Map61B in increasing order. makes
+     * use of StringUtils.nextString(String s)
      */
     public static double insertInOrder(Map61B<String, Integer> map61B, int N) {
         Stopwatch sw = new Stopwatch();
@@ -79,9 +79,8 @@ public class InsertInOrderSpeedTest {
     }
 
     /**
-     * Attempts to insert N in-order strings of length L into map,
-     * Prints time of the N insert calls, otherwise
-     * Prints a nice message about the error
+     * Attempts to insert N in-order strings of length L into map, Prints time of
+     * the N insert calls, otherwise Prints a nice message about the error
      */
     public static void timeInOrderMap61B(Map61B<String, Integer> map, int N) {
         try {
@@ -95,9 +94,8 @@ public class InsertInOrderSpeedTest {
     }
 
     /**
-     * Attempts to insert N in-order strings of length L into TreeMap,
-     * Prints time of the N insert calls, otherwise
-     * Prints a nice message about the error
+     * Attempts to insert N in-order strings of length L into TreeMap, Prints time
+     * of the N insert calls, otherwise Prints a nice message about the error
      */
     public static void timeInOrderTreeMap(TreeMap<String, Integer> treeMap, int N) {
         try {
@@ -111,9 +109,8 @@ public class InsertInOrderSpeedTest {
     }
 
     /**
-     * Attempts to insert N in-order strings of length L into HashMap,
-     * Prints time of the N insert calls, otherwise
-     * Prints a nice message about the error
+     * Attempts to insert N in-order strings of length L into HashMap, Prints time
+     * of the N insert calls, otherwise Prints a nice message about the error
      */
     public static void timeInOrderHashMap(HashMap<String, Integer> hashMap, int N) {
         try {
@@ -126,11 +123,14 @@ public class InsertInOrderSpeedTest {
         }
     }
 
-    /* ------------------------------- Private methods ------------------------------- */
+    /*
+     * ------------------------------- Private methods
+     * -------------------------------
+     */
 
     /**
-     * To be called after catching a StackOverflowError
-     * Prints the error with corresponding N and L
+     * To be called after catching a StackOverflowError Prints the error with
+     * corresponding N and L
      */
     private static void printInfoOnStackOverflow(int N) {
         System.out.println("--Stack Overflow -- couldn't add " + N + " strings.");

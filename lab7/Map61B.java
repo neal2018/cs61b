@@ -1,4 +1,5 @@
 import java.util.Set;
+
 /* Your implementation BSTMap should implement this interface. To do so,
  * append "implements Map61B<K,V>" to the end of your "public class..."
  * declaration, though you can use other formal type parameters if you'd like.
@@ -10,8 +11,9 @@ public interface Map61B<K, V> extends Iterable<K> {
     /* Returns true if this map contains a mapping for the specified key. */
     boolean containsKey(K key);
 
-    /* Returns the value to which the specified key is mapped, or null if this
-     * map contains no mapping for the key.
+    /*
+     * Returns the value to which the specified key is mapped, or null if this map
+     * contains no mapping for the key.
      */
     V get(K key);
 
@@ -24,13 +26,17 @@ public interface Map61B<K, V> extends Iterable<K> {
     /* Returns a Set view of the keys contained in this map. */
     Set<K> keySet();
 
-    /* Removes the mapping for the specified key from this map if present.
-     * Not required for Lab 8. If you don't implement this, throw an
-     * UnsupportedOperationException. */
+    /*
+     * Removes the mapping for the specified key from this map if present. Not
+     * required for Lab 8. If you don't implement this, throw an
+     * UnsupportedOperationException.
+     */
     V remove(K key);
 
-    /* Removes the entry for the specified key only if it is currently mapped to
-     * the specified value. Not required for Lab 8. If you don't implement this,
-     * throw an UnsupportedOperationException.*/
+    /*
+     * Removes the entry for the specified key only if it is currently mapped to the
+     * specified value. Not required for Lab 8. If you don't implement this, throw
+     * an UnsupportedOperationException.
+     */
     V remove(K key, V value);
 }
