@@ -18,15 +18,14 @@ public class TestMyHashMap {
         }
     }
 
-    //assumes put/size/containsKey/get work
+    // assumes put/size/containsKey/get work
     @Test
     public void sanityClearTest() {
         MyHashMap<String, Integer> b = new MyHashMap<String, Integer>();
         for (int i = 0; i < 455; i++) {
             b.put("hi" + i, 1);
-            //make sure put is working via containsKey and get
-            assertTrue(null != b.get("hi" + i)
-                        && b.containsKey("hi" + i)); 
+            // make sure put is working via containsKey and get
+            assertTrue(null != b.get("hi" + i) && b.containsKey("hi" + i));
         }
         b.clear();
         assertEquals(0, b.size());
@@ -69,7 +68,7 @@ public class TestMyHashMap {
         assertEquals(456, b.size());
     }
 
-    //assumes get/containskey work
+    // assumes get/containskey work
     @Test
     public void sanityPutTest() {
         MyHashMap<String, Integer> b = new MyHashMap<String, Integer>();
@@ -77,18 +76,18 @@ public class TestMyHashMap {
         assertTrue(b.containsKey("hi") && b.get("hi") != null);
     }
 
-    /* 
-    * Sanity test for keySet
-    */
+    /*
+     * Sanity test for keySet
+     */
     @Test
     public void sanityKeySetTest() {
         MyHashMap<String, Integer> b = new MyHashMap<String, Integer>();
         HashSet<String> values = new HashSet<String>();
         for (int i = 0; i < 455; i++) {
-            b.put("hi" + i, 1);   
+            b.put("hi" + i, 1);
             values.add("hi" + i);
         }
-        assertEquals(455, b.size()); //keys are there
+        assertEquals(455, b.size()); // keys are there
         Set<String> keySet = b.keySet();
         assertTrue(values.containsAll(keySet));
         assertTrue(keySet.containsAll(values));

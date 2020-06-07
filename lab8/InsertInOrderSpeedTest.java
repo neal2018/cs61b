@@ -4,15 +4,16 @@ import java.util.Scanner;
 import edu.princeton.cs.algs4.Stopwatch;
 
 /**
- * Performs a timing test on three different set implementations.
- * For MyHashMap purposes assumes that <K,V> are <String, Integer> pairs.
- * @author Josh Hug 
+ * Performs a timing test on three different set implementations. For MyHashMap
+ * purposes assumes that <K,V> are <String, Integer> pairs.
+ * 
+ * @author Josh Hug
  * @author Brendan Hu
  */
 public class InsertInOrderSpeedTest {
     /**
      * Requests user input and performs tests of three different set
-     * implementations. ARGS is unused. 
+     * implementations. ARGS is unused.
      */
     public static void main(String[] args) throws IOException {
         int N;
@@ -22,21 +23,18 @@ public class InsertInOrderSpeedTest {
         InsertRandomSpeedTest i = new InsertRandomSpeedTest();
 
         System.out.println("\n This program inserts lexicographically increasing Strings"
-                           + "into Maps as <String, Integer> pairs.");
+                + "into Maps as <String, Integer> pairs.");
 
         String repeat = "y";
         do {
             System.out.print("\nEnter # strings to insert into ULLMap: ");
-            timeInOrderMap61B(new ULLMap<String, Integer>(), 
-                              i.waitForPositiveInt(input));
-       
+            timeInOrderMap61B(new ULLMap<String, Integer>(), i.waitForPositiveInt(input));
+
             System.out.print("\nEnter # strings to insert into MyHashMap: ");
-            timeInOrderMap61B(new MyHashMap<String, Integer>(), 
-                              i.waitForPositiveInt(input));
-    
+            timeInOrderMap61B(new MyHashMap<String, Integer>(), i.waitForPositiveInt(input));
+
             System.out.print("\nEnter # strings to insert into Java's HashMap: ");
-            timeInOrderHashMap(new HashMap<String, Integer>(), 
-                              i.waitForPositiveInt(input));                        
+            timeInOrderHashMap(new HashMap<String, Integer>(), i.waitForPositiveInt(input));
 
             System.out.print("\nWould you like to try more timed-tests? (y/n): ");
             repeat = input.nextLine();
@@ -44,9 +42,9 @@ public class InsertInOrderSpeedTest {
         input.close();
     }
 
-    /** 
-     * Returns time needed to put N strings into a Map61B in increasing order.
-     * makes use of StringUtils.nextString(String s)
+    /**
+     * Returns time needed to put N strings into a Map61B in increasing order. makes
+     * use of StringUtils.nextString(String s)
      */
     public static double insertInOrder(Map61B<String, Integer> map61B, int N) {
         Stopwatch sw = new Stopwatch();
@@ -57,7 +55,7 @@ public class InsertInOrderSpeedTest {
         }
         return sw.elapsedTime();
     }
-    
+
     /**
      * Returns time needed to put N strings into HashMap in increasing order.
      */
@@ -72,45 +70,45 @@ public class InsertInOrderSpeedTest {
     }
 
     /**
-     * Attempts to insert N in-order strings of length L into map,
-     * Prints time of the N insert calls, otherwise
-     * Prints a nice message about the error
+     * Attempts to insert N in-order strings of length L into map, Prints time of
+     * the N insert calls, otherwise Prints a nice message about the error
      */
-    public static void timeInOrderMap61B(Map61B<String, Integer> map, int N) {        
+    public static void timeInOrderMap61B(Map61B<String, Integer> map, int N) {
         try {
             double mapTime = insertInOrder(map, N);
             System.out.printf(map.getClass() + ": %.2f sec\n", mapTime);
-        } catch (StackOverflowError e) { 
-            printInfoOnStackOverflow(N); 
-        } catch (RuntimeException e) { 
-            e.printStackTrace(); 
+        } catch (StackOverflowError e) {
+            printInfoOnStackOverflow(N);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
         }
     }
 
     /**
-     * Attempts to insert N in-order strings of length L into HashMap,
-     * Prints time of the N insert calls, otherwise
-     * Prints a nice message about the error
+     * Attempts to insert N in-order strings of length L into HashMap, Prints time
+     * of the N insert calls, otherwise Prints a nice message about the error
      */
-    public static void timeInOrderHashMap(HashMap<String, Integer> hashMap, int N) {        
+    public static void timeInOrderHashMap(HashMap<String, Integer> hashMap, int N) {
         try {
             double javaTime = insertInOrder(hashMap, N);
             System.out.printf("Java's Built-in HashMap: %.2f sec\n", javaTime);
-        } catch (StackOverflowError e) { 
-            printInfoOnStackOverflow(N); 
-        } catch (RuntimeException e) { 
-            e.printStackTrace(); 
+        } catch (StackOverflowError e) {
+            printInfoOnStackOverflow(N);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
         }
     }
 
-    /* ------------------------------- Private methods ------------------------------- */
+    /*
+     * ------------------------------- Private methods
+     * -------------------------------
+     */
 
     /**
-     * To be called after catching a StackOverflowError
-     * Prints the error with corresponding N and L
+     * To be called after catching a StackOverflowError Prints the error with
+     * corresponding N and L
      */
     private static void printInfoOnStackOverflow(int N) {
         System.out.println("--Stack Overflow -- couldn't add " + N + " strings.");
     }
 }
-
