@@ -13,7 +13,7 @@ public class TestMyTrieSet {
         MyTrieSet t = new MyTrieSet();
         for (int i = 0; i < 455; i++) {
             t.add("hi" + i);
-            //make sure put is working via contains
+            // make sure put is working via contains
             assertTrue(t.contains("hi" + i));
         }
         t.clear();
@@ -34,22 +34,22 @@ public class TestMyTrieSet {
     // assumes add works
     @Test
     public void sanityPrefixTest() {
-        String[] saStrings = new String[]{"same", "sam", "sad", "sap"};
-        String[] otherStrings = new String[]{"a", "awls", "hello"};
+        String[] saStrings = new String[] { "same", "sam", "sad", "sap" };
+        String[] otherStrings = new String[] { "a", "awls", "hello" };
 
         MyTrieSet t = new MyTrieSet();
-        for (String s: saStrings) {
+        for (String s : saStrings) {
             t.add(s);
         }
-        for (String s: otherStrings) {
+        for (String s : otherStrings) {
             t.add(s);
         }
 
         List<String> keys = t.keysWithPrefix("sa");
-        for (String s: saStrings) {
+        for (String s : saStrings) {
             assertTrue(keys.contains(s));
         }
-        for (String s: otherStrings) {
+        for (String s : otherStrings) {
             assertFalse(keys.contains(s));
         }
     }
@@ -57,7 +57,5 @@ public class TestMyTrieSet {
     public static void main(String[] args) {
         jh61b.junit.TestRunner.runTests(TestMyTrieSet.class);
     }
-
-
 
 }
