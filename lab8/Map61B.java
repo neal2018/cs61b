@@ -1,4 +1,5 @@
 import java.util.Set;
+
 /**
  * Your implementation MyHashMap should implement this interface. To do so,
  * append "implements Map61B<K, V>" to the end of your "public class..."
@@ -12,8 +13,8 @@ public interface Map61B<K, V> extends Iterable<K> {
     boolean containsKey(K key);
 
     /**
-     * Returns the value to which the specified key is mapped, or null if this
-     * map contains no mapping for the key.
+     * Returns the value to which the specified key is mapped, or null if this map
+     * contains no mapping for the key.
      */
     V get(K key);
 
@@ -21,9 +22,8 @@ public interface Map61B<K, V> extends Iterable<K> {
     int size();
 
     /**
-     * Associates the specified value with the specified key in this map.
-     * If the map previously contained a mapping for the key,
-     * the old value is replaced.
+     * Associates the specified value with the specified key in this map. If the map
+     * previously contained a mapping for the key, the old value is replaced.
      */
     void put(K key, V value);
 
@@ -31,17 +31,16 @@ public interface Map61B<K, V> extends Iterable<K> {
     Set<K> keySet();
 
     /**
-     * Removes the mapping for the specified key from this map if present.
-     * Not required for Lab 8. If you don't implement this, throw an
+     * Removes the mapping for the specified key from this map if present. Not
+     * required for Lab 8. If you don't implement this, throw an
      * UnsupportedOperationException.
      */
     V remove(K key);
 
     /**
-     * Removes the entry for the specified key only if it is currently mapped to
-     * the specified value. Not required for Lab 8. If you don't implement this,
-     * throw an UnsupportedOperationException.
+     * Removes the entry for the specified key only if it is currently mapped to the
+     * specified value. Not required for Lab 8. If you don't implement this, throw
+     * an UnsupportedOperationException.
      */
     V remove(K key, V value);
 }
-
